@@ -75,7 +75,7 @@ class CloneAdminExtension extends AbstractAdminExtension
         }
     }
 
-    public function configureRoutes(AdminInterface $admin, RouteCollection $collection): void
+    public function configureRoutes(AdminInterface $admin, RouteCollectionInterface $collection): void
     {
         $collection->add(
             'clone',
