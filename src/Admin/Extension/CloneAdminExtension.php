@@ -33,14 +33,14 @@ class CloneAdminExtension extends AbstractAdminExtension
         $this->requestStack = $requestStack;
     }
 
-    public function getAccessMapping(AdminInterface $admin)
+    public function getAccessMapping(AdminInterface $admin): array
     {
         return [
             'clone' => 'CREATE',
         ];
     }
 
-    public function alterNewInstance(AdminInterface $admin, $object)
+    public function alterNewInstance(AdminInterface $admin, $object): void
     {
         $request = $this->requestStack->getCurrentRequest();
         if ($request === null || !$request->attributes->has(self::REQUEST_ATTRIBUTE)) {
@@ -75,7 +75,7 @@ class CloneAdminExtension extends AbstractAdminExtension
         }
     }
 
-    public function configureRoutes(AdminInterface $admin, RouteCollection $collection)
+    public function configureRoutes(AdminInterface $admin, RouteCollection $collection): void
     {
         $collection->add(
             'clone',
@@ -86,7 +86,7 @@ class CloneAdminExtension extends AbstractAdminExtension
         );
     }
 
-    public function configureListFields(ListMapper $listMapper)
+    public function configureListFields(ListMapper $listMapper): void
     {
         $itemkeys = $listMapper->keys();
 
